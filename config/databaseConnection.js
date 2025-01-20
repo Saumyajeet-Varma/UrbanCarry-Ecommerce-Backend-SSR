@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(`mongodb://127.0.0.1:27017/urbanCarryDB`)
+require('dotenv').config()
+
+mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`)
     .then(() => {
-        console.log("Connected successfully")
+        console.log("Connected")
     })
     .catch(err => {
         console.log(`ERROR : (${err.message})\n${err}`)

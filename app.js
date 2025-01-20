@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+require('dotenv').config()
+
 const cookieParser = require('cookie-parser');
 const path = require('path')
 
@@ -19,7 +21,6 @@ app.use("/users", usersRouter)
 app.use("/owners", ownersRouter)
 app.use("/products", productsRouter)
 
-const PORT = 3000
-app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`)
+app.listen(process.env.PORT, () => {
+    console.log(`http://localhost:${process.env.PORT || 3000}`)
 })
