@@ -24,7 +24,7 @@ module.exports.registerUser = async (req, res) => {
 
         const token = generateToken(createdUser)
 
-        res.cookie("token", token).send("User created successfully")
+        res.cookie("token", token).redirect("/shop")
     }
     catch (err) {
         res.send(err.message)
@@ -50,7 +50,7 @@ module.exports.loginUser = async (req, res) => {
 
         const token = generateToken(user)
 
-        res.cookie("token", token).send("Login successfully.")
+        res.cookie("token", token).redirect("/shop")
     }
     catch (err) {
         res.send(err.message)
