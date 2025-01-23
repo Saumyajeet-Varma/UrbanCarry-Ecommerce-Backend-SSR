@@ -2,8 +2,12 @@ const express = require('express')
 const router = express.Router()
 const ownerModel = require("../models/ownerModel")
 
-router.get("/", (req, res) => {
-    res.send("Owner")
+// router.get("/", (req, res) => {
+//     res.send("Owner")
+// })
+
+router.get("/admin", (req, res) => {
+    res.render("createProduct")
 })
 
 // ? This should be development route

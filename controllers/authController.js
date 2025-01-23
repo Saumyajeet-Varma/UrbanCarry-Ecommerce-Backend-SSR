@@ -11,7 +11,8 @@ module.exports.registerUser = async (req, res) => {
         const userExist = await userModel.findOne({ email })
 
         if (userExist) {
-            return res.status(401).send("You already have an account, please login.")
+            req.flash("error", "You already have an account, please login")
+            return res.status(401).redirect("/register")
         }
 
         const hashedPassword = await bcrypt.hash(password, parseInt(process.env.HASH_ROUNDS || 10));
@@ -39,13 +40,15 @@ module.exports.loginUser = async (req, res) => {
         const user = await userModel.findOne({ email })
 
         if (!user) {
-            return res.send("Email or password is incorrect.")
+            req.flash("error", "Email or password is incorrect")
+            return res.redirect('/')
         }
 
         const isCorrectPassword = await bcrypt.compare(password, user.password);
 
         if (!isCorrectPassword) {
-            return res.send("Email or password is incorrect.")
+            req.flash("error", "Email or password is incorrect")
+            return res.redirect('/')
         }
 
         const token = generateToken(user)

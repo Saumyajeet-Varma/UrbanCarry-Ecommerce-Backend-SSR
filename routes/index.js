@@ -3,13 +3,13 @@ const { isLoggedIn } = require('../middlewares/isLoggedIn')
 const router = express.Router()
 
 router.get("/", (req, res) => {
-    // const error = req.flash("error")
-    // res.render("index", { error })
-    res.render("index")
+    const error = req.flash("error")
+    res.render("index", { error })
 })
 
 router.get("/register", (req, res) => {
-    res.render("register")
+    const error = req.flash("error")
+    res.render("register", { error })
 })
 
 router.get("/shop", isLoggedIn, (req, res) => {
