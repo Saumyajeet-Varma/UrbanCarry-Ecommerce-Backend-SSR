@@ -7,7 +7,12 @@ const ownerModel = require("../models/ownerModel")
 // })
 
 router.get("/admin", (req, res) => {
-    res.render("createProduct")
+    res.render("admin")
+})
+
+router.get("/admin/createProduct", (req, res) => {
+    const success = req.flash("success");
+    res.render("createProduct", { success })
 })
 
 // ? This should be development route
