@@ -82,103 +82,37 @@
         </div>
       </div>
       <!-- Main Content Area -->
-      <div
-        class="content w-3/4 p-5 flex flex-wrap flex-start gap-4 overflow-y-scroll"
-      >
-        <!-- Image Container 1 -->
+      <div class="content w-3/4 p-5 flex justify-center overflow-y-scroll">
+        <div class="flex items-start gap-5">
+          <% products.forEach(product => { %>
 
-        <div class="w-60 max-h-80 bg-yellow-400 overflow-hidden">
-          <div class="w-full h-52 flex items-center justify-center bg-blue-700">
-            <img
-              class="h-[12rem]"
-              src="https://via.placeholder.com/300"
-              alt="Placeholder Image"
-            />
-          </div>
-          <div class="flex justify-between items-center px-4 py-4 text-red">
-            <div>
-              <h3>Clinge Bag</h3>
-              <h4>₹ 1200</h4>
-            </div>
-            <a
-              class="w-7 h-7 flex items-center justify-center rounded-full bg-white"
-              href=""
+          <div class="w-60 bg-red-500">
+            <div
+              class="w-full h-52 flex justify-center items-center bg-[<%= product.bgColor %>]"
             >
-              <i class="ri-add-line"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Image Container 1 -->
-
-        <div class="w-60 max-h-80 bg-yellow-400 overflow-hidden">
-          <div class="w-full h-52 flex items-center justify-center bg-blue-700">
-            <img
-              class="h-[12rem]"
-              src="https://via.placeholder.com/300"
-              alt="Placeholder Image"
-            />
-          </div>
-          <div class="flex justify-between items-center px-4 py-4 text-red">
-            <div>
-              <h3>Clinge Bag</h3>
-              <h4>₹ 1200</h4>
+              <img
+                class="h-[12rem]"
+                src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+                alt="<%= product.name %>"
+              />
             </div>
-            <a
-              class="w-7 h-7 flex items-center justify-center rounded-full bg-white"
-              href=""
+            <div
+              class="flex justify-between bg-[<%= product.panelColor %>] items-center px-4 py-4 text-[<%= product.textColor %>]"
             >
-              <i class="ri-add-line"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Image Container 1 -->
-
-        <div class="w-60 max-h-80 bg-yellow-400 overflow-hidden">
-          <div class="w-full h-52 flex items-center justify-center bg-blue-700">
-            <img
-              class="h-[12rem]"
-              src="https://via.placeholder.com/300"
-              alt="Placeholder Image"
-            />
-          </div>
-          <div class="flex justify-between items-center px-4 py-4 text-red">
-            <div>
-              <h3>Clinge Bag</h3>
-              <h4>₹ 1200</h4>
+              <div>
+                <h3><%= product.name %></h3>
+                <h4>₹ <%= product.price %></h4>
+              </div>
+              <a
+                class="w-7 h-7 flex items-center justify-center rounded-full bg-white"
+                href=""
+              >
+                <i class="ri-add-line"></i>
+              </a>
             </div>
-            <a
-              class="w-7 h-7 flex items-center justify-center rounded-full bg-white"
-              href=""
-            >
-              <i class="ri-add-line"></i>
-            </a>
           </div>
-        </div>
 
-        <!-- Image Container 1 -->
-
-        <div class="w-60 max-h-80 bg-yellow-400 overflow-hidden">
-          <div class="w-full h-52 flex items-center justify-center bg-blue-700">
-            <img
-              class="h-[12rem]"
-              src="https://via.placeholder.com/300"
-              alt="Placeholder Image"
-            />
-          </div>
-          <div class="flex justify-between items-center px-4 py-4 text-red">
-            <div>
-              <h3>Clinge Bag</h3>
-              <h4>₹ 1200</h4>
-            </div>
-            <a
-              class="w-7 h-7 flex items-center justify-center rounded-full bg-white"
-              href=""
-            >
-              <i class="ri-add-line"></i>
-            </a>
-          </div>
+          <% }) %>
         </div>
 
         <!-- Add more image containers as needed -->

@@ -1,6 +1,8 @@
 const express = require('express')
-const { isLoggedIn } = require('../middlewares/isLoggedIn')
 const router = express.Router()
+
+const { isLoggedIn } = require('../middlewares/isLoggedIn')
+const productModel = require('../models/productModel')
 
 router.get("/", (req, res) => {
     const error = req.flash("error")
@@ -12,8 +14,11 @@ router.get("/register", (req, res) => {
     res.render("register", { error })
 })
 
-router.get("/shop", isLoggedIn, (req, res) => {
-    res.render("shop")
+router.get("/shop", isLoggedIn, async (req, res) => {
+
+    const products = await productModel.find()
+
+    res.render("shop", { products })
 })
 
 module.exports = router
