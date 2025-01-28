@@ -12,6 +12,14 @@
   </head>
   <body>
     <div class="main w-full h-screen bg-gray-300 flex">
+      <% if(success.length > 0) { %>
+      <div
+        class="absolute top-5 left-1/2 -translate-x-1/2 - translate-y-1/2 p-3 rounded-md bg-black"
+      >
+        <span class="inline-block mt-1 mb-1 text-white"> <%= success %> </span>
+      </div>
+      <% } %>
+
       <!-- Sidebar -->
       <div
         class="sidebar w-1/4 bg-black text-white flex flex-col items-center p-5 justify-between"
@@ -36,7 +44,7 @@
             </li>
           </ul>
         </div>
-        <div class="flex flex-col items-center p-5">
+        <!-- <div class="flex flex-col items-center p-5">
           <div class="flex items-center p-5">
             <h2>Sort by:</h2>
             <form action="/shop/sort">
@@ -50,7 +58,7 @@
               </select>
             </form>
           </div>
-          <!-- <div class="flex items-center p-5">
+           <div class="flex items-center p-5">
             <h2>Filter by:</h2>
             <form action="/shop/filter">
               <select
@@ -62,13 +70,16 @@
                 <option value="discount">Discount</option>
               </select>
             </form>
-          </div> -->
-        </div>
+          </div>
+        </div> -->
         <div class="flex flex-col items-center p-5">
           <ul class="space-y-4">
             <li>
-              <a class="block text-center hover:text-gray-400" href="#"
-                >Profile</a
+              <a class="block text-center hover:text-gray-400" href="#">Shop</a>
+            </li>
+            <li>
+              <a class="block text-center hover:text-gray-400" href="/cart"
+                >Cart</a
               >
             </li>
             <li>
@@ -81,14 +92,15 @@
           </ul>
         </div>
       </div>
+
       <!-- Main Content Area -->
       <div class="content w-3/4 p-5 flex justify-center overflow-y-scroll">
         <div class="flex items-start gap-5">
           <% products.forEach(product => { %>
 
-          <div class="w-60 bg-red-500">
+          <div class="w-60 border border-zinc-900">
             <div
-              class="w-full h-52 flex justify-center items-center bg-[<%= product.bgColor %>]"
+              class="w-full h-52 flex justify-center items-center bg-[#E0E0E0]"
             >
               <img
                 class="h-[12rem]"
@@ -97,15 +109,15 @@
               />
             </div>
             <div
-              class="flex justify-between bg-[<%= product.panelColor %>] items-center px-4 py-4 text-[<%= product.textColor %>]"
+              class="flex justify-between bg-zinc-900 items-center px-4 py-4 text-white"
             >
               <div>
                 <h3><%= product.name %></h3>
                 <h4>₹ <%= product.price %></h4>
               </div>
               <a
-                class="w-7 h-7 flex items-center justify-center rounded-full bg-white"
-                href=""
+                class="w-7 h-7 flex items-center justify-center rounded-full bg-white text-black"
+                href="/addToCart/<%= product._id %>"
               >
                 <i class="ri-add-line"></i>
               </a>
@@ -114,8 +126,6 @@
 
           <% }) %>
         </div>
-
-        <!-- Add more image containers as needed -->
       </div>
     </div>
   </body>
